@@ -1,0 +1,19 @@
+@echo off
+setlocal enabledelayedexpansion
+
+:: Get the current date
+for /f "tokens=2 delims==" %%i in ('wmic os get localdatetime /value') do set datetime=%%i
+
+:: Extract date components
+set year=%datetime:~0,4%
+set month=%datetime:~4,2%
+set day=%datetime:~6,2%
+
+:: Create the folder name
+set foldername=%year%-%month%-%day%
+
+:: Create the new folder
+mkdir %foldername%
+
+echo Folder %foldername% created.
+pause
